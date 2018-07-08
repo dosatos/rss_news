@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from feeds.models import Source, Article
 from feeds.forms import SourceForm
 
@@ -19,15 +19,15 @@ def source_page(request):
     if request.method == 'POST':
         form = SourceForm(request.POST)
         if form.is_valid():
-            try:
+            try:  # try to add to the db
                 url = form.cleaned_data['link']
-                save_source_to_db(url)
-            except KeyError as e:
+                utils.save_source_to_db(url)
+                return redirect('/sources/')
+            except KeyError as e:  # display message if the provided url is not valid
                 print("Error: ", e)  # prints for the sake of simplicity. should be logged instead.
+                context['form'] = form
                 context['message'] = 'Please, provide correct source link'
                 return render(request, template_path, context)
-            return redirect('/sources/')
     form = SourceForm()
     context['form'] = form
-
     return render(request, template_path, context)
