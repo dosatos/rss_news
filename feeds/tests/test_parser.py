@@ -1,5 +1,5 @@
 import pytest
-from feeds.utils import parse, get_source, save_source_to_db, get_articles
+from feeds.utils import parse, get_source, get_articles
 
 @pytest.fixture()
 def setup():

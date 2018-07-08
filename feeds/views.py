@@ -21,8 +21,7 @@ def source_page(request):
         if form.is_valid():
             try:  # try to add to the db
                 url = form.cleaned_data['link']
-                utils.save_source_to_db(url)
-                update_source(articles)
+                utils.update_source(url)
                 return redirect('/sources/')
             except KeyError as e:  # display message if the provided url is not valid
                 print("Error: ", e)  # prints for the sake of simplicity. should be logged instead.
