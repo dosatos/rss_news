@@ -17,12 +17,10 @@ x create the parsing module
 # Setup the feeds: (20)
 x setup the testing environment
 x declare the urls for feeds
+x create models for Source
+- create models for Article
 - define an empty default feeds views
 - create an empty template for the feeds view
-
-# Models (20)
-- Create models for Source
-- Create models for Article
 
 # CSS (20)
 - add css for the feeds page
