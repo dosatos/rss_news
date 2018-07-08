@@ -43,7 +43,7 @@ def extend_sources(url):
     """ this func saves source into db """
     parsed = parse(url)
     # save sources
-    source_fields = get_source(parsed)  # TODO: it does not check for unique sources yet.
+    source_fields = get_source(parsed)
     defaults = {'title': source_fields['title']}
     # source = Source.objects.get_or_create(link=source_fields['link'], defaults=defaults)
     source, _ = Source.objects.get_or_create(link=parsed['feed']['link'], defaults={'title': parsed['feed']['title']})

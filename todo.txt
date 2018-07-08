@@ -51,6 +51,5 @@ x add css for the feeds/source/login pages
 - use threads
 - schedule the tasks
 
-# TODO: source models to be unique
 # TODO: pagination
 # TODO: make tests for accounts app
