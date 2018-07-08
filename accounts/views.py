@@ -1,4 +1,9 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+
+from accounts.forms import RegistrationForm, CustomUserLoginForm
+from accounts.models import CustomUser
 
 # Create your views here.
 def login_view(request):
@@ -19,9 +24,55 @@ def login_view(request):
     return render(request, template, {'form': form})
 
 
-def logout_view(request):
-    pass
-
-
 def register(request):
-    pass
+    template = 'accounts/register.html'
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # username = request.POST['email']
+            # password = request.POST['password1']
+            # print("-"*50)
+            # print(username, password)
+            # user = authenticate(username=username,
+            #                     password=password)
+            # login(request, user)
+            return redirect('/')
+        return render(request, template, {'form': form})
+    form = RegistrationForm()
+    if request.user.is_authenticated:
+        return redirect('/')
+    return render(request, template, {'form': form})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
+
+
+def profile(request):
+    template = 'accounts/profile.html'
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return redirect(request.path)
+    form = PasswordChangeForm(user=request.user)
+    context = {'form': form}
+    return render(request, template, context)
+
+
+def authenticate_user(username, password):
+    # http://thepythondjango.com/creating-custom-user-model-and-custom-authentication-in-django/
+    try:
+        user = CustomUser.objects.get(username=username)
+        print(user, type(user))
+        print(user, user.is_active)
+        if user.check_password(password):
+            return user
+        else:
+            return None
+    except CustomUser.DoesNotExist:
+        print("Such user not found")
+        return None
