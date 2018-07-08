@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sources</title>
+</head>
+<body>
+    <h1> The feeds are parsed from sources: </h1>
+    <ul>
+    {% for feed in feeds %}
+        <li>
+            <p>
+                {{feed.title}} <br>
+                <a href="">{{feed.link}} | Date Published: {{feed.published}}</a> <br>
+                {{feed.body}} <br>
+            </p>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

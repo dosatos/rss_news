@@ -23,4 +23,18 @@ class TestViews:
         response = source_page(request)
         assert response.status_code == 200
 
+    def test_feeds_view_authenticated(self):
+        path = reverse('feeds')
+        request = RequestFactory().get(path)
+        request.user = mixer.blend(User)
+        response = source_page(request)
+        assert response.status_code == 200
+
+    def test_feeds_view_unauthenticated(self):
+        path = reverse('feeds')
+        request = RequestFactory().get(path)
+        request.user = AnonymousUser()
+        response = source_page(request)
+        assert response.status_code == 200
+
 

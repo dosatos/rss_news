@@ -12,17 +12,21 @@ x setup the database
 x create the parsing module
     x get source
     x get articles
-- save to the db when the source added
 
 # Setup the feeds: (20)
 x setup the testing environment
 x declare the urls for feeds
 x create models for Source
 x create models for Article
+x define an empty default source views
+x create an empty template for the source view
+
 - define an empty default feeds views
 - create an empty template for the feeds view
-- add records to source table
-- add records to article table
+
+- add sources: post request for the source view
+    - save to the db when the source added
+    - auto add records to article table
 
 # CSS (20)
 - add css for the feeds page
