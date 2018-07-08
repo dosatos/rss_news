@@ -16,7 +16,7 @@ x create the parsing module
 
 # Setup the feeds: (20)
 x setup the testing environment
-- declare the urls for feeds
+x declare the urls for feeds
 - define an empty default feeds views
 - create an empty template for the feeds view
 

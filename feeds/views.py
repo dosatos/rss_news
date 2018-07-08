@@ -1,5 +1,9 @@
 from django.shortcuts import render
 
 # Create your views here.
-def index(reqeust):
+def feeds(request):
+    pass
+
+
+def sources(request):
     pass
