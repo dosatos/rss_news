@@ -24,8 +24,8 @@ x create an empty template for the source view
 x define an empty default feeds views
 x create an empty template for the feeds view
 
-- add sources: post request for the source view
-    - save to the db when the source added
+x add sources: post request for the source view
+    x save to the db when the source added
     - auto add records to article table
 
 # CSS (20)
