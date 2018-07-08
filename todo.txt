@@ -34,16 +34,17 @@ x setup logout
 # CSS
 x add css for the feeds/source/login pages
 
+# Bookmarking app
+model:
+- many-to-many relationship: feeds to users
+- create the view, template, url for bookmarking (login_required)
+
 # Comments App
 - create the model
 - urls
 - forms
 - views
 - front-end
-
-# Bookmarking app
-- many-to-many relationship: feeds to users
-- create the view, template, url for bookmarking (login_required)
 
 # Setup the auto-update of the urls
 - celery/redis

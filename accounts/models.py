@@ -4,6 +4,8 @@ from django.db import models
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
+from feeds.models import Article
+
 class CustomUserManager(BaseUserManager):
     def create_user(self, email, username, password=None):
         """
@@ -38,7 +40,8 @@ class CustomUser(AbstractBaseUser):
     username = models.CharField(max_length=45, unique=True, blank=False, null=False)
     first_name = models.CharField(max_length=45)
     second_name = models.CharField(max_length=45)
-    email = models.EmailField(verbose_name='email address', max_length=255, unique=True,)
+    email = models.EmailField(verbose_name='email address', max_length=255, unique=True)
+    bookmarks = models.ManyToManyField(Article)
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
