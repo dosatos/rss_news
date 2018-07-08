@@ -1,12 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from feeds.models import Source
 
-# Create your views here.
+
 def feeds(request):
     pass
 
 
-def sources(request):
+def source_page(request):
     template_path = 'feeds/sources.html'
-    if request.method == 'GET':
-        return render(request, template_path)
+    sources = Source.objects.all()
+    context = {'sources': sources}
+    return render(request, template_path, context)

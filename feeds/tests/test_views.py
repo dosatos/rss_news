@@ -3,7 +3,7 @@ from mixer.backend.django import mixer
 from django.test import RequestFactory
 from django.urls import reverse, resolve
 from django.contrib.auth.models import User, AnonymousUser
-from feeds.views import sources
+from feeds.views import source_page
 
 
 @pytest.mark.django_db
@@ -13,14 +13,14 @@ class TestViews:
         path = reverse('sources')
         request = RequestFactory().get(path)
         request.user = mixer.blend(User)
-        response = sources(request)
+        response = source_page(request)
         assert response.status_code == 200
 
     def test_source_view_unauthenticated(self):
         path = reverse('sources')
         request = RequestFactory().get(path)
         request.user = AnonymousUser()
-        response = sources(request)
+        response = source_page(request)
         assert response.status_code == 200
 
 
