@@ -1,0 +1,7 @@
+Django==2.0.7
+mixer==6.0.1
+psycopg2==2.7.5
+pytest==3.6.3
+pytest-cov==2.5.1
+pytest-django==3.3.2
+pytz==2018.5

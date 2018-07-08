@@ -1,0 +1,6 @@
+DB_NAME=rss_feeds
+DB_USER=rss_feeds
+DB_PASS=helloworldshoov3Phezaimahsh7eb2Tii4ohkah8k
+DB_SERVICE=postgres
+DB_PORT=5432
+SECRET_KEY=XXX

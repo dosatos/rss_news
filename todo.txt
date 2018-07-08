@@ -1,0 +1,51 @@
+# Setup the environment (40)
+- Init git
+- Docker
+- Store SECRET key separately
+- Setup the testing environment
+
+# Install django (40)
+- create django project
+- start app and add to the project
+- setup the database
+
+# Setup the feeds: (20)
+- declare the urls for feeds
+- define an empty default feeds views
+- create an empty template for the feeds view
+
+# Models (20)
+- Create models for Source
+- Create models for Article
+
+# Setup the parsing module (30)
+- create the parsing module
+    - get source
+    - get articles
+- save to the db when the source added
+
+# CSS (20)
+- add css for the feeds page
+- color difference for read/unread
+
+# Setup the auto-update of the urls (30)
+- create the update method
+- use threads
+- schedule the tasks
+
+# User Authentication (30)
+- setup registration
+- setup login
+- setup logout
+
+# User Comments (30)
+- create the model
+- urls
+- forms
+- views
+- front-end
+
+# Bookmarking (30)
+- many-to-many relationship: feeds to users
+- create the view, template, url for bookmarking (login_required)
+- add CSS
