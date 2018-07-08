@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+
 from feeds.models import Source, Article
 from feeds.forms import SourceForm
+
 
 from feeds import utils
 
@@ -34,5 +37,6 @@ def source_page(request):
     return render(request, template_path, context)
 
 
+@login_required
 def bookmarks(request):
     pass
