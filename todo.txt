@@ -31,9 +31,9 @@ x add sources: post request for the source view
 x add css for the feeds page
 
 # User Authentication
-- setup login
-- setup registration
-- setup logout
+x setup login
+x setup registration
+x setup logout
 
 # User Comments
 - create the model
@@ -45,7 +45,6 @@ x add css for the feeds page
 # Bookmarking
 - many-to-many relationship: feeds to users
 - create the view, template, url for bookmarking (login_required)
-
 
 
 # Setup the auto-update of the urls

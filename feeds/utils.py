@@ -23,7 +23,7 @@ def parse(url):
 def get_source(parsed):
     """ this func returns an object of type Source, given the 'parse' from an rss """
     source = parsed['feed']
-    return Source(link=source['link'], title=source['title'])
+    return Source(link=parsed['href'], title=source['title'])
 
 
 def extend_sources(url):

@@ -30,13 +30,6 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            # username = request.POST['email']
-            # password = request.POST['password1']
-            # print("-"*50)
-            # print(username, password)
-            # user = authenticate(username=username,
-            #                     password=password)
-            # login(request, user)
             return redirect('/')
         return render(request, template, {'form': form})
     form = RegistrationForm()
@@ -64,7 +57,6 @@ def profile(request):
 
 
 def authenticate_user(username, password):
-    # http://thepythondjango.com/creating-custom-user-model-and-custom-authentication-in-django/
     try:
         user = CustomUser.objects.get(username=username)
         print(user, type(user))
