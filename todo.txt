@@ -1,7 +1,7 @@
 # Setup the environment (40)
-- Init git
-- Docker
-- Store SECRET key separately
+x Init git
+x Docker
+- Store SECRET key separately as an env variable
 - Setup the testing environment
 
 # Install django (40)
