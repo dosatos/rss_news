@@ -32,3 +32,7 @@ def source_page(request):
     form = SourceForm()
     context['form'] = form
     return render(request, template_path, context)
+
+
+def bookmarks(request):
+    pass

@@ -10,3 +10,7 @@ class TestUrls:
     def test_source_url_exists(self):
         path = reverse('sources')
         assert resolve(path).view_name == 'sources'
+
+    def test_bookmarks_url_exists(self):
+        path = reverse('bookmarks')
+        assert resolve(path).view_name == 'bookmarks'
