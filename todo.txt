@@ -9,13 +9,13 @@ x start app and add to the project
 x setup the database
 
 # Setup the parsing module (30)
-- create the parsing module
-    - get source
-    - get articles
+x create the parsing module
+    x get source
+    x get articles
 - save to the db when the source added
 
 # Setup the feeds: (20)
-- setup the testing environment
+x setup the testing environment
 - declare the urls for feeds
 - define an empty default feeds views
 - create an empty template for the feeds view
