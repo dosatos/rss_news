@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sources</title>
+</head>
+<body>
+    <h1> The feeds are parsed from sources: </h1>
+    <ul>
+    {% for source in sources %}
+        <li>
+            <p>source.title</p> - <a href="">source.link</a>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
