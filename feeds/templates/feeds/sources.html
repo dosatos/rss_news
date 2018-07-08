@@ -5,13 +5,26 @@
     <title>Sources</title>
 </head>
 <body>
-    <h1> The feeds are parsed from sources: </h1>
-    <ul>
-    {% for source in sources %}
-        <li>
-            <p>{{source.title}}</p> - <a href="">{{source.link}}</a>
-        </li>
-    {% endfor %}
-    </ul>
+    <div class="wrapper">
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Add"/>
+        </form>
+
+        {% if message %}
+            {{message}}
+        {% endif %}
+
+        <h1> The feeds are parsed from sources: </h1>
+        <ul>
+        {% for source in sources %}
+            <li>
+                <p>{{source.title}}</p> - <a href="">{{source.link}}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

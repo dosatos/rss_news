@@ -9,7 +9,7 @@ def parsed():
 
 def test_get_source(parsed):
     source = get_source(parsed)
-    assert source['title'] == 'NU - Algemeen' and source['link'] == 'https://www.nu.nl/algemeen'
+    assert source.title == 'NU - Algemeen' and source.link == 'https://www.nu.nl/algemeen'
 
 
 def test_get_article(parsed):

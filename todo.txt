@@ -13,7 +13,7 @@ x create the parsing module
     x get source
     x get articles
 
-# Setup the feeds: (20)
+# Setup the feeds: (60)
 x setup the testing environment
 x declare the urls for feeds
 x create models for Source
