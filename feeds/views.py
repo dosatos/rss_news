@@ -1,9 +1,12 @@
 from django.shortcuts import render
-from feeds.models import Source
+from feeds.models import Source, Article
 
 
 def feeds(request):
-    pass
+    template_path = 'feeds/feeds.html'
+    articles = Article.objects.all()
+    context = {'feeds': articles}
+    return render(request, template_path, context)
 
 
 def source_page(request):

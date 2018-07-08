@@ -21,8 +21,8 @@ x create models for Article
 x define an empty default source views
 x create an empty template for the source view
 
-- define an empty default feeds views
-- create an empty template for the feeds view
+x define an empty default feeds views
+x create an empty template for the feeds view
 
 - add sources: post request for the source view
     - save to the db when the source added
