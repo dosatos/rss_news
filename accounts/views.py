@@ -57,6 +57,7 @@ def profile(request):
 
 
 def authenticate_user(username, password):
+    # TODO: check and correct authentication of the users
     try:
         user = CustomUser.objects.get(username=username)
         print(user, type(user))

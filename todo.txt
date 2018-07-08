@@ -36,8 +36,8 @@ x add css for the feeds/source/login pages
 
 # Bookmarking app
 model:
-- many-to-many relationship: feeds to users
-- create the view, template, url for bookmarking (login_required)
+x many-to-many relationship: feeds to users
+- create the url, view, template for bookmarking (login_required)
 
 # Comments App
 - create the model
