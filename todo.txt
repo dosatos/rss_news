@@ -2,14 +2,20 @@
 x Init git
 x Docker
 - Store SECRET key separately as an env variable
-- Setup the testing environment
 
 # Install django (40)
 x create django project
 x start app and add to the project
 x setup the database
 
+# Setup the parsing module (30)
+- create the parsing module
+    - get source
+    - get articles
+- save to the db when the source added
+
 # Setup the feeds: (20)
+- setup the testing environment
 - declare the urls for feeds
 - define an empty default feeds views
 - create an empty template for the feeds view
@@ -17,12 +23,6 @@ x setup the database
 # Models (20)
 - Create models for Source
 - Create models for Article
-
-# Setup the parsing module (30)
-- create the parsing module
-    - get source
-    - get articles
-- save to the db when the source added
 
 # CSS (20)
 - add css for the feeds page
