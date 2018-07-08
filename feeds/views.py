@@ -7,5 +7,6 @@ def feeds(request):
 
 
 def sources(request):
+    template_path = 'feeds/sources.html'
     if request.method == 'GET':
-        return HttpResponse(request, 'Hello world')
+        return render(request, template_path)

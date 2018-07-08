@@ -23,9 +23,4 @@ class TestViews:
         response = sources(request)
         assert response.status_code == 200
 
-    # def test_source_template_added(self):
-    #     path = reverse('sources')
-    #     request = RequestFactory().get(path)
-    #     response = sources(request)
-    #     assert 'source.html' in [t.name for t in response.templates]
 
