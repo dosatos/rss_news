@@ -46,3 +46,7 @@
     width: 80%;
     text-align: center;
 }
+
+.source-wrapper ul{
+    list-style-type: none;
+}

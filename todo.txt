@@ -28,9 +28,11 @@ x add sources: post request for the source view
     x save to the db when the source added
     x auto add records to article table
 
+x add css for the feeds page
+
 # User Authentication
-- setup registration
 - setup login
+- setup registration
 - setup logout
 
 # User Comments
@@ -44,9 +46,7 @@ x add sources: post request for the source view
 - many-to-many relationship: feeds to users
 - create the view, template, url for bookmarking (login_required)
 
-# CSS
-- add css for the feeds page
-- color difference for read/unread
+
 
 # Setup the auto-update of the urls
 - celery/redis

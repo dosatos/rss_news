@@ -6,7 +6,6 @@ from time import mktime
 from feeds.models import Source, Article
 
 
-
 def parse(url):
     """ this func parses an rss page """
     regex = re.compile(
