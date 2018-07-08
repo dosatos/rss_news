@@ -20,35 +20,37 @@ x create models for Source
 x create models for Article
 x define an empty default source views
 x create an empty template for the source view
-
 x define an empty default feeds views
 x create an empty template for the feeds view
-
 x add sources: post request for the source view
     x save to the db when the source added
     x auto add records to article table
-
-x add css for the feeds page
 
 # User Authentication
 x setup login
 x setup registration
 x setup logout
 
-# User Comments
+# CSS
+x add css for the feeds/source/login pages
+
+# Comments App
 - create the model
 - urls
 - forms
 - views
 - front-end
 
-# Bookmarking
+# Bookmarking app
 - many-to-many relationship: feeds to users
 - create the view, template, url for bookmarking (login_required)
-
 
 # Setup the auto-update of the urls
 - celery/redis
 - create the update method
 - use threads
 - schedule the tasks
+
+# TODO: source models to be unique
+# TODO: pagination
+# TODO: make tests for accounts app

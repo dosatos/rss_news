@@ -23,24 +23,13 @@ def parse(url):
 def get_source(parsed):
     """ this func returns an object of type Source, given the 'parse' from an rss """
     source = parsed['feed']
-    return Source(link=parsed['href'], title=source['title'])
-
-
-def extend_sources(url):
-    """ this func saves source into db """
-    parsed = parse(url)
-    # save sources
-    source = get_source(parsed)  # TODO: it does not check for unique sources yet.
-    source.save()
-    # save articles
-    articles = get_articles(parsed, source)
-    update_source(articles)
+    return dict(link=parsed['href'], title=source['title'])
 
 
 def get_articles(parsed, source):
     """ this func returns list of articles """
     entries = parsed['entries']
-    amsterdam = timezone('Europe/Amsterdam')
+    amsterdam = timezone('Europe/Amsterdam')  # TODO: make it generic, it assumes all is amsterdam time
     articles = [dict(link=entry['link'],
                      title=entry['title'],
                      body=entry['summary'],  # TODO: truncate <img> tags parsed as a part of the summary
@@ -48,6 +37,19 @@ def get_articles(parsed, source):
                      date_published=amsterdam.localize(datetime.fromtimestamp(mktime(entry['published_parsed']))))
                 for entry in entries]
     return articles
+
+
+def extend_sources(url):
+    """ this func saves source into db """
+    parsed = parse(url)
+    # save sources
+    source_fields = get_source(parsed)  # TODO: it does not check for unique sources yet.
+    defaults = {'title': source_fields['title']}
+    # source = Source.objects.get_or_create(link=source_fields['link'], defaults=defaults)
+    source, _ = Source.objects.get_or_create(link=parsed['feed']['link'], defaults={'title': parsed['feed']['title']})
+    # save articles
+    articles = get_articles(parsed, source)
+    update_source(articles)
 
 
 def update_source(articles):
@@ -59,5 +61,4 @@ def update_source(articles):
             'source': a['source'],
             'date_published': a['date_published']
         }
-        Article.objects.get_or_create(link=a['link'],
-                                      defaults=defaults)
+        Article.objects.get_or_create(link=a['link'], defaults=defaults)

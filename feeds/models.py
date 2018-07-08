@@ -3,7 +3,7 @@ from django.db import models
 
 class Source(models.Model):
     title = models.CharField(max_length=100, null=False, blank=False)
-    link = models.CharField(max_length=100, null=False, blank=False)
+    link = models.CharField(max_length=100, null=False, blank=False, unique=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
 
