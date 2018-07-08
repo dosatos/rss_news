@@ -1,7 +1,7 @@
 import pytest
 from mixer.backend.django import mixer
 from django.test import RequestFactory
-from django.urls import reverse, resolve
+from django.urls import reverse
 from django.contrib.auth.models import User, AnonymousUser
 from feeds.views import source_page
 

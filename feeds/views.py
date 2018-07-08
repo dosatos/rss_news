@@ -8,8 +8,9 @@ from feeds import utils
 def feeds(request):
     template_path = 'feeds/feeds.html'
     articles = Article.objects.all()
-    context = {'feeds': articles}
-    return render(request, template_path, context)
+    context = {'articles': articles,
+               'articles_count': len(articles)}
+    return render(request, template_path, context)  # TODO: limit number of items shown, so far shows all feeds without limitation
 
 
 def source_page(request):

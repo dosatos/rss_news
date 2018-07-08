@@ -44,7 +44,7 @@ def get_articles(parsed, source):
     amsterdam = timezone('Europe/Amsterdam')
     articles = [dict(link=entry['link'],
                      title=entry['title'],
-                     body=entry['summary'],
+                     body=entry['summary'],  # TODO: truncate <img> tags parsed as a part of the summary
                      source=source,
                      date_published=amsterdam.localize(datetime.fromtimestamp(mktime(entry['published_parsed']))))
                 for entry in entries]

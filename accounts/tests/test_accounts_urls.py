@@ -9,7 +9,7 @@ class TestUrls:
 
     def test_logout_url_exists(self):
         path = reverse('logout')
-        assert resolve(path).view_name == 'logout'\
+        assert resolve(path).view_name == 'logout'
 
     def test_register_url_exists(self):
         path = reverse('register')
