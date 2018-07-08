@@ -5,9 +5,9 @@ x Docker
 - Setup the testing environment
 
 # Install django (40)
-- create django project
-- start app and add to the project
-- setup the database
+x create django project
+x start app and add to the project
+x setup the database
 
 # Setup the feeds: (20)
 - declare the urls for feeds
