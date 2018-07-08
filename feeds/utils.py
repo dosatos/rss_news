@@ -1,6 +1,10 @@
-import feedparser
 import re
+import feedparser
+from pytz import timezone
+from datetime import datetime
+from time import mktime
 from feeds.models import Source, Article
+
 
 
 def parse(url):
@@ -16,8 +20,9 @@ def parse(url):
         url = "http://" + url
     return feedparser.parse(url)
 
+
 def get_source(parsed):
-    """ this func returns an object of type Source, given the 'parse' """
+    """ this func returns an object of type Source, given the 'parse' from an rss """
     source = parsed['feed']
     return Source(link=source['link'], title=source['title'])
 
@@ -26,7 +31,7 @@ def extend_sources(url):
     """ this func saves source into db """
     parsed = parse(url)
     # save sources
-    source = get_source(parsed)
+    source = get_source(parsed)  # TODO: it does not check for unique sources yet.
     source.save()
     # save articles
     articles = get_articles(parsed, source)
@@ -35,22 +40,25 @@ def extend_sources(url):
 
 def get_articles(parsed, source):
     """ this func returns list of articles """
-    articles = []
     entries = parsed['entries']
-    for entry in entries:
-        articles.append(
-            Article(
-                link=entry['link'],
-                title=entry['title'],
-                body=entry['summary'],
-                source=source,
-                guid=entry['id'],
-                date_published=entry['published_parsed']
-            )
-        )
+    amsterdam = timezone('Europe/Amsterdam')
+    articles = [dict(link=entry['link'],
+                     title=entry['title'],
+                     body=entry['summary'],
+                     source=source,
+                     date_published=amsterdam.localize(datetime.fromtimestamp(mktime(entry['published_parsed']))))
+                for entry in entries]
     return articles
+
 
 def update_source(articles):
     """ this func saves articles into db """
     for a in articles:
-        a.save()
+        defaults = {
+            'title': a['title'],
+            'body': a['body'],
+            'source': a['source'],
+            'date_published': a['date_published']
+        }
+        Article.objects.get_or_create(link=a['link'],
+                                      defaults=defaults)

@@ -1,5 +1,7 @@
 import pytest
-from feeds.utils import parse, get_source, get_articles
+from feeds.utils import parse, get_source, get_articles, extend_sources
+from feeds.models import Article
+
 
 @pytest.fixture()
 def setup():
@@ -7,6 +9,7 @@ def setup():
     parsed = parse(url)
     source = get_source(parsed)
     return parsed, source
+
 
 def test_get_source(setup):
     _, source = setup
@@ -16,4 +19,11 @@ def test_get_source(setup):
 def test_get_articles(setup):
     parsed, source = setup
     articles = get_articles(parsed, source)
-    assert articles[0].title != None and type(articles[0].title) == str
+    assert articles[0]['title'] != None and type(articles[0]['title']) == str and type(articles[0]) == dict
+
+
+# @pytest.mark.django_db
+# def test_extend_sources():
+#     url = 'http://www.nu.nl/rss/Algemeen'
+#     extend_sources(url)
+#     extend_sources(url)
