@@ -53,3 +53,4 @@ x add css for the feeds/source/login pages
 
 # TODO: pagination
 # TODO: make tests for accounts app
+# TODO: html: href all the links to the external web-sites
