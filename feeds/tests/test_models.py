@@ -1,7 +1,5 @@
-# from datetime import datetime
 import pytest
 from mixer.backend.django import mixer
-from feeds.utils import parse, get_source
 
 
 @pytest.mark.django_db
@@ -12,5 +10,5 @@ class TestModels:
         assert source.title == 'NU - Algemeen'
 
     def test_article_add(self):
-        source = mixer.blend('feeds.Source', title='Hello World', body='Testing summary')
-        assert source.title == 'Hello World'
+        source = mixer.blend('feeds.Article', title='Hello World', body='Testing summary')
+        assert source.title == 'Hello World' and source.body == 'Testing summary'
