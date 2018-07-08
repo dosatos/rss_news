@@ -22,7 +22,7 @@ def get_source(parsed):
     return Source(link=source['link'], title=source['title'])
 
 
-def save_source_to_db(url):
+def update_source(url):
     """ this func saves source into db """
     parsed = parse(url)
     # save sources
