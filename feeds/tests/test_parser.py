@@ -13,6 +13,5 @@ def test_get_source(parsed):
 
 
 def test_get_article(parsed):
-    article = get_article(parsed)
-    article['title']
-    assert True
+    articles = get_article(parsed)
+    assert articles[0]['title'] != None
