@@ -25,14 +25,17 @@ def get_source(parsed):
 def save_source_to_db(url):
     """ this func saves source into db """
     parsed = parse(url)
-    s = get_source(parsed)
-    s.save()
+    # save sources
+    source = get_source(parsed)
+    source.save()
+    # save articles
+    articles = get_articles(parsed, source)
+    update_source(articles)
 
 
-def get_articles(parsed):
+def get_articles(parsed, source):
     """ this func returns list of articles """
     articles = []
-    source = get_source(parsed)
     entries = parsed['entries']
     for entry in entries:
         articles.append(
@@ -46,3 +49,8 @@ def get_articles(parsed):
             )
         )
     return articles
+
+def update_source(articles):
+    """ this func saves articles into db """
+    for a in articles:
+        a.save()
