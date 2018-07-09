@@ -50,3 +50,18 @@
 .source-wrapper ul{
     list-style-type: none;
 }
+
+.wrapper {
+    margin: auto;
+    width: 80%;
+}
+
+.add-button-form{
+    width: 100%;
+}
+
+.article-wrapper {
+    margin: auto;
+    width: 80%;
+    text-align: center;
+}

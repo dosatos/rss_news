@@ -1,7 +1,7 @@
 {% extends 'feeds/base.html' %}
 {% block css %}
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'feeds/css/index.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'feeds/css/style.css' %}" />
 {% endblock %}
 
 {% block title %} RSS Feeds {% endblock %}
@@ -13,12 +13,23 @@
         </div>
         {% for article in articles %}
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-1">
+            {% if user.is_authenticated %}
+            {% endif %}
             <a href="{{ article.link }}">
                 <h4 class="title">{{ article.title }}</h4>
             </a>
             <h5 class="category">Source: {{ article.source.title }} | {{ article.date_published}}</h5>
             <!--TODO: clean the summary by removing <img>. so far truncated -->
             <p class="text">{{ article.body|truncatechars:200 }}</p>
+            <form style="display: inline;" action="/add-bookmark/" method="POST">
+                {% csrf_token %}
+                {% if article in user.bookmarks.all %}
+                    <button class="btn-success" type="submit" name="key" value="{{ article.pk }}"> Remove from Bookmarks </button>
+                {% else %}
+                    <button class="btn-primary" type="submit" name="key" value="{{ article.pk }}"> Add to Bookmarks </button>
+                {% endif %}
+            </form>
+            <hr>
         </div>
         {% endfor %}
     </div>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 
 from feeds.models import Source, Article
@@ -47,3 +47,15 @@ def bookmarks(request):
                'articles_count': len(articles)}
     # TODO: limit number of items shown, so far shows all feeds without limitation
     return render(request, template_path, context)
+
+
+@login_required
+def add_bookmark(request):
+    if request.method == "POST":
+        article = get_object_or_404(Article, pk=int(request.POST['key']))
+        if article in request.user.bookmarks.all():  # adding to bookmarks
+            request.user.bookmarks.remove(article)
+        else:  # removing from bookmarks
+            request.user.bookmarks.add(article)
+        return redirect(request.path)
+    return redirect('/')
