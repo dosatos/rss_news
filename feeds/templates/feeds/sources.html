@@ -17,11 +17,14 @@
             {{message}}
         {% endif %}
 
-        <h1> The feeds are parsed from sources: </h1>
+        <h3> The feeds are parsed from sources: </h3>
         <ul>
         {% for source in sources %}
             <li>
-                <p>{{source.title}}</p> - <a href="">{{source.link}}</a>
+                <p>
+                    {{source.title}}: <a target="_blank" href="{{source.link}}">{{source.link}}</a>
+                </p>
+                <br>
             </li>
         {% endfor %}
         </ul>

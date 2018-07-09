@@ -51,12 +51,9 @@ x create the url, view, template for bookmarking (login_required)
 - front-end
 
 # Setup the auto-update of the urls
-- celery/redis
-- create the update method
-- use threads
-- schedule the tasks
+x celery/redis
+x schedule the tasks
 
 # TODO: pagination
 # TODO: make tests for accounts app
 # TODO: html: href all the links to the external web-sites
-# TODO: Correct admin login
