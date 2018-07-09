@@ -4,6 +4,11 @@ services:
   db:
     restart: always
     image: postgres
+  redis:
+    restart: always
+    image: redis:latest
+    expose:
+      - "6379"
   web:
     restart: always
     build: .
@@ -14,3 +19,4 @@ services:
       - "8000:8000"
     depends_on:
       - db
+      - redis

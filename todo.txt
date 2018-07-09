@@ -1,3 +1,6 @@
+TODO LIST
+LEGEND: todo (-), done (x)
+
 # Setup the environment
 x Init git
 x Docker
@@ -37,7 +40,8 @@ x add css for the feeds/source/login pages
 # Bookmarking app
 model:
 x many-to-many relationship: feeds to users
-- create the url, view, template for bookmarking (login_required)
+x create the url, view, template for bookmarking (login_required)
+- add/remove bookmark
 
 # Comments App
 - create the model
@@ -55,3 +59,4 @@ x many-to-many relationship: feeds to users
 # TODO: pagination
 # TODO: make tests for accounts app
 # TODO: html: href all the links to the external web-sites
+# TODO: Correct admin login

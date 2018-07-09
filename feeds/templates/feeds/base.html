@@ -20,6 +20,7 @@
             <div>
                 <ul class="nav nav-tabs">
                     <li role="presentation" class="{% if request.path == '/' %} active {% endif %}"><a class="btn-sm" href="/">Feeds</a></li>
+                    <li role="presentation" class="{% if request.path == '/bookmarks/' %} active {% endif %}"><a class="btn-sm nav-text" href="/bookmarks/">Bookmarks</a></li>
                     <li role="presentation" class="{% if request.path == '/sources/' %} active {% endif %}"><a class="btn-sm nav-text" href="/sources/">Sources</a></li>
                     {% if not request.user.is_authenticated %}
                     <li role="presentation" class="{% if request.path == '/accounts/login/' %} active {% endif %}"><a class="btn-sm nav-text" href="/accounts/login">Login</a></li>

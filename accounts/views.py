@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from accounts.forms import RegistrationForm, CustomUserLoginForm
 from accounts.models import CustomUser
 
-# Create your views here.
+
 def login_view(request):
     template = 'accounts/login.html'
     if request.method == 'POST':

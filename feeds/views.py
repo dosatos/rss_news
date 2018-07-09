@@ -3,10 +3,11 @@ from django.contrib.auth.decorators import login_required
 
 from feeds.models import Source, Article
 from feeds.forms import SourceForm
+from accounts.models import CustomUser
 
 
 from feeds import utils
-
+from feeds import tasks
 
 def feeds(request):
     template_path = 'feeds/feeds.html'
@@ -17,6 +18,7 @@ def feeds(request):
 
 
 def source_page(request):
+    tasks.auto_update.delay()
     template_path = 'feeds/sources.html'
     sources = Source.objects.all()
     context = {'sources': sources}
@@ -39,4 +41,9 @@ def source_page(request):
 
 @login_required
 def bookmarks(request):
-    pass
+    template_path = 'feeds/bookmarks.html'
+    articles =  request.user.bookmarks.all()
+    context = {'articles': articles,
+               'articles_count': len(articles)}
+    # TODO: limit number of items shown, so far shows all feeds without limitation
+    return render(request, template_path, context)

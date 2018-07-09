@@ -6,3 +6,5 @@ pytest-cov==2.5.1
 pytest-django==3.3.2
 pytz==2018.5
 feedparser
+celery
+redis
