@@ -1,5 +1,7 @@
 {% extends 'feeds/base.html' %}
 {% block css %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'feeds/css/style.css' %}" />
 {% endblock %}
@@ -32,24 +34,45 @@
                         {% endif %}
                     </form>
                 </div>
+
                 <div class="pull-right col-xs-3">
-                    <button class="btn-default"> Comments </button>
+                    <button type="button" class="btn-default"
+                            data-toggle="collapse"
+                            data-target="#{{article.pk}}"> Comments:  <span class="badge">{{ article.comment_set.count }}</span> </button>
                 </div>
             </div>
             <br>
-            <div class="row">
-                <div>
-                    {% for comment in article.comments.all %}
-                        {{ comment.author }}
-                        <br>
-                        {{ comment.content }}
-                        {{ comment.date_added }}
-                        <hr>
-                    {% endfor %}
+            <div id="{{article.pk}}" class="row panel panel-default collapse">
+                {% for comment in article.comment_set.all %}
+                <div class="panel-body">
+                    {{ comment.author }}
+                    <br>
+                    {{ comment.content }}
+                    {{ comment.date_added }}
                 </div>
+                {% endfor %}
+            </div>
+            <div style="width:50%">
+                <form>
+                    {% csrf_token %}
+                    {{ comment_form.content }}
+                    <input type="text" class="form-control" id="" placeholder="Write a comment">
+                </form>
             </div>
             <hr>
         </div>
         {% endfor %}
     </div>
+    <script type="text/javascript">
+        function showComments(comment) {
+            console.log(comment);
+            var commentsBlock = document.getElementById(comment);
+            console.log(id, commentsBlock);
+            if (commentsBlock.style.display === "none") {
+                commentsBlock.style.display = "block";
+            } else {
+                commentsBlock.style.display = "none";
+            }
+        }
+    </script>
 {% endblock %}

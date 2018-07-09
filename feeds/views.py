@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.db.models import Prefetch
 
 from feeds.models import Source, Article
 from feeds.forms import SourceForm
