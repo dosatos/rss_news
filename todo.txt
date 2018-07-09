@@ -56,4 +56,4 @@ x schedule the tasks
 
 # TODO: pagination
 # TODO: make tests for accounts app
-# TODO: html: href all the links to the external web-sites
+# TODO: ajax-ify bookmarking

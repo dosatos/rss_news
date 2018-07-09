@@ -21,14 +21,33 @@
             <h5 class="category">Source: {{ article.source.title }} | {{ article.date_published}}</h5>
             <!--TODO: clean the summary by removing <img>. so far truncated -->
             <p class="text">{{ article.body|truncatechars:200 }}</p>
-            <form method="POST">
-                {% csrf_token %}
-                {% if article in user.bookmarks.all %}
-                    <button class="btn-success" type="submit" name="key" value="{{ article.pk }}"> Remove from Bookmarks </button>
-                {% else %}
-                    <button class="btn-primary" type="submit" name="key" value="{{ article.pk }}"> Add to Bookmarks </button>
-                {% endif %}
-            </form>
+            <div class="row">
+                <div class="pull-left col-xs-5">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% if article in user.bookmarks.all %}
+                            <button class="btn-success" type="submit" name="key" value="{{ article.pk }}"> Remove from Bookmarks </button>
+                        {% else %}
+                            <button class="btn-primary" type="submit" name="key" value="{{ article.pk }}"> Add to Bookmarks </button>
+                        {% endif %}
+                    </form>
+                </div>
+                <div class="pull-right col-xs-3">
+                    <button class="btn-default"> Comments </button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div>
+                    {% for comment in comments %}
+                        {{ comment.user }}
+                        <br>
+                        {{ comment.content }}
+                        {{ comment.date_added }}
+                        <hr>
+                    {% endfor %}
+                </div>
+            </div>
             <hr>
         </div>
         {% endfor %}
