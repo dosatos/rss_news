@@ -41,7 +41,7 @@ x add css for the feeds/source/login pages
 model:
 x many-to-many relationship: feeds to users
 x create the url, view, template for bookmarking (login_required)
-- add/remove bookmark
+x add/remove bookmark
 
 # Comments App
 - create the model

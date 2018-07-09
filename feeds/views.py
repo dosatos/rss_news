@@ -10,10 +10,12 @@ from feeds import utils
 from feeds import tasks
 
 def feeds(request):
+    if request.method == "POST":
+        return add_bookmark(request)
     template_path = 'feeds/feeds.html'
     articles = Article.objects.all()
     context = {'articles': articles,
-               'articles_count': len(articles)}
+               'top_message': f"About {len(articles)} articles on the web-site"}
     return render(request, template_path, context)  # TODO: limit number of items shown, so far shows all feeds without limitation
 
 
@@ -41,21 +43,20 @@ def source_page(request):
 
 @login_required
 def bookmarks(request):
-    template_path = 'feeds/bookmarks.html'
+    if request.method == "POST":
+        return add_bookmark(request)
+    template_path = 'feeds/feeds.html'
     articles =  request.user.bookmarks.all()
     context = {'articles': articles,
-               'articles_count': len(articles)}
+               'top_message': f"You have bookmarked {len(articles)} articles."}
     # TODO: limit number of items shown, so far shows all feeds without limitation
     return render(request, template_path, context)
 
 
-@login_required
 def add_bookmark(request):
-    if request.method == "POST":
-        article = get_object_or_404(Article, pk=int(request.POST['key']))
-        if article in request.user.bookmarks.all():  # adding to bookmarks
-            request.user.bookmarks.remove(article)
-        else:  # removing from bookmarks
-            request.user.bookmarks.add(article)
-        return redirect(request.path)
-    return redirect('/')
+    article = get_object_or_404(Article, pk=int(request.POST['key']))
+    if article in request.user.bookmarks.all():  # adding to bookmarks
+        request.user.bookmarks.remove(article)
+    else:  # removing from bookmarks
+        request.user.bookmarks.add(article)
+    return redirect(request.path)
