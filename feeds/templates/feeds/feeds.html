@@ -39,8 +39,8 @@
             <br>
             <div class="row">
                 <div>
-                    {% for comment in comments %}
-                        {{ comment.user }}
+                    {% for comment in article.comments.all %}
+                        {{ comment.author }}
                         <br>
                         {{ comment.content }}
                         {{ comment.date_added }}

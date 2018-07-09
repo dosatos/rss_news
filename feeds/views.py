@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 from feeds.models import Source, Article
 from feeds.forms import SourceForm
-from accounts.models import CustomUser
+from comments.models import Comment
 
 
 from feeds import utils
@@ -15,7 +15,8 @@ def feeds(request):
     template_path = 'feeds/feeds.html'
     articles = Article.objects.all()
     context = {'articles': articles,
-               'top_message': f"About {len(articles)} articles on the web-site"}
+               'top_message': f"About {len(articles)} articles on the web-site",
+    }
     return render(request, template_path, context)  # TODO: limit number of items shown, so far shows all feeds without limitation
 
 

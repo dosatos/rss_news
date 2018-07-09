@@ -14,7 +14,3 @@ class TestUrls:
     def test_bookmarks_url_exists(self):
         path = reverse('bookmarks')
         assert resolve(path).view_name == 'bookmarks'
-
-    def test_bookmarks_url_exists(self):
-        path = reverse('add-bookmark')
-        assert resolve(path).view_name == 'add-bookmark'
