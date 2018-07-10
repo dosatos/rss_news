@@ -23,18 +23,20 @@ def parse(url):
 def get_source(parsed):
     """ this func returns an object of type Source, given the 'parse' from an rss """
     source = parsed['feed']
-    return dict(link=parsed['href'], title=source['title'])
+    return {
+        'link': parsed['href'], 'title': source['title']
+    }
 
 
 def get_articles(parsed, source):
     """ this func returns list of articles """
     entries = parsed['entries']
     amsterdam = timezone('Europe/Amsterdam')  # TODO: make it generic, it assumes all is amsterdam time
-    articles = [dict(link=entry['link'],
-                     title=entry['title'],
-                     body=entry['summary'],  # TODO: truncate <img> tags parsed as a part of the summary
-                     source=source,
-                     date_published=amsterdam.localize(datetime.fromtimestamp(mktime(entry['published_parsed']))))
+    articles = [{'link': entry['link'],
+                 'title': entry['title'],
+                 'body': entry['summary'],  # TODO: truncate <img> tags parsed as a part of the summary
+                 'source': source,
+                 'date_published': amsterdam.localize(datetime.fromtimestamp(mktime(entry['published_parsed'])))}
                 for entry in entries]
     return articles
 
