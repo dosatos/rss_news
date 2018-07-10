@@ -1,82 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a00ba4ad-1d11-4d0b-8358-4787bed14101" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/rss_news.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.pytest_cache/v/cache/nodeids" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/backends.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/migrations/0002_customuser_bookmarks.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/accounts/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/templates/accounts/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/tests/test_accounts_urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/tests/test_accounts_views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/celerybeat-schedule" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comments/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comments/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comments/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comments/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comments/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comments/migrations/0002_auto_20180709_2049.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comments/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comments/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comments/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comments/tests/test_comments_models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/comments/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/env_file.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/migrations/0002_auto_20180708_1331.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/migrations/0003_auto_20180708_1440.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/migrations/0004_auto_20180708_1808.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/migrations/0005_auto_20180708_1810.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/migrations/0006_auto_20180708_1817.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/migrations/0007_auto_20180708_1819.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/migrations/0008_auto_20180708_1820.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/migrations/0009_auto_20180708_2006.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/static/feeds/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/tasks.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/templates/feeds/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/templates/feeds/feeds.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/templates/feeds/sources.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/tests/test_models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/tests/test_parser.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/tests/test_urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/tests/test_views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feeds/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pytest.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/celery.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/wsgi.py" afterDir="false" />
-    </list>
+    <list default="true" id="a00ba4ad-1d11-4d0b-8358-4787bed14101" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -343,7 +268,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18189038" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32965517" />
