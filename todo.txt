@@ -44,16 +44,12 @@ x create the url, view, template for bookmarking (login_required)
 x add/remove bookmark
 
 # Comments App
-- create the model
-- urls
-- forms
-- views
-- front-end
+x create the model
+x urls
+x forms
+x views
+x front-end
 
 # Setup the auto-update of the urls
 x celery/redis
 x schedule the tasks
-
-# TODO: pagination
-# TODO: make tests for accounts app
-# TODO: ajax-ify bookmarking
