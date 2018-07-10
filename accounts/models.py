@@ -37,6 +37,13 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractBaseUser):
+    """
+    Inhertiance from the AbstractBaseUser is used
+    to avoid changing the default user model.
+
+    Main difference from the default model:
+        - bookmarks
+    """
     username = models.CharField(max_length=45, unique=True, blank=False, null=False)
     first_name = models.CharField(max_length=45)
     second_name = models.CharField(max_length=45)
