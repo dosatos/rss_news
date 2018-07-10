@@ -1,0 +1,32 @@
+{% extends 'feeds/base.html' %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'feeds/css/index.css' %}" />
+{% endblock %}
+
+{% block title %} RSS Source {% endblock %}
+
+{% block content %}
+    <div class="source-wrapper">
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Add"/>
+        </form>
+        {% if message %}
+            {{message}}
+        {% endif %}
+
+        <h3> The feeds are parsed from sources: </h3>
+        <ul>
+        {% for source in sources %}
+            <li>
+                <p>
+                    {{source.title}}: <a target="_blank" href="{{source.link}}">{{source.link}}</a>
+                </p>
+                <br>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

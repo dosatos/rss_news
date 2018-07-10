@@ -1,0 +1,20 @@
+[
+  "accounts/tests/test_accounts_urls.py::TestUrls::()::test_login_url_exists",
+  "accounts/tests/test_accounts_urls.py::TestUrls::()::test_logout_url_exists",
+  "accounts/tests/test_accounts_urls.py::TestUrls::()::test_register_url_exists",
+  "accounts/tests/test_accounts_views.py::TestViews::()::test_source_view_authenticated",
+  "comments/tests/test_comments_models.py::TestModels::()::test_comments_add",
+  "feeds/tests/test_models.py::TestModels::()::test_source_add",
+  "feeds/tests/test_models.py::TestModels::()::test_article_add",
+  "feeds/tests/test_models.py::TestModels::()::test_bookmarking",
+  "feeds/tests/test_parser.py::test_get_source",
+  "feeds/tests/test_parser.py::test_extend_source",
+  "feeds/tests/test_parser.py::test_get_articles",
+  "feeds/tests/test_urls.py::TestUrls::()::test_feeds_url_exists",
+  "feeds/tests/test_urls.py::TestUrls::()::test_source_url_exists",
+  "feeds/tests/test_urls.py::TestUrls::()::test_bookmarks_url_exists",
+  "feeds/tests/test_views.py::TestViews::()::test_source_view_authenticated",
+  "feeds/tests/test_views.py::TestViews::()::test_source_view_unauthenticated",
+  "feeds/tests/test_views.py::TestViews::()::test_feeds_view_authenticated",
+  "feeds/tests/test_views.py::TestViews::()::test_feeds_view_unauthenticated"
+]

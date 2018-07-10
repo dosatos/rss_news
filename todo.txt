@@ -1,0 +1,59 @@
+TODO LIST
+LEGEND: todo (-), done (x)
+
+# Setup the environment
+x Init git
+x Docker
+- Store SECRET key separately as an env variable
+
+# Install django
+x create django project
+x start app and add to the project
+x setup the database
+
+# Setup the parsing module
+x create the parsing module
+    x get source
+    x get articles
+
+# Setup the feeds:
+x setup the testing environment
+x declare the urls for feeds
+x create models for Source
+x create models for Article
+x define an empty default source views
+x create an empty template for the source view
+x define an empty default feeds views
+x create an empty template for the feeds view
+x add sources: post request for the source view
+    x save to the db when the source added
+    x auto add records to article table
+
+# User Authentication
+x setup login
+x setup registration
+x setup logout
+
+# CSS
+x add css for the feeds/source/login pages
+
+# Bookmarking app
+model:
+x many-to-many relationship: feeds to users
+x create the url, view, template for bookmarking (login_required)
+x add/remove bookmark
+
+# Comments App
+- create the model
+- urls
+- forms
+- views
+- front-end
+
+# Setup the auto-update of the urls
+x celery/redis
+x schedule the tasks
+
+# TODO: pagination
+# TODO: make tests for accounts app
+# TODO: ajax-ify bookmarking

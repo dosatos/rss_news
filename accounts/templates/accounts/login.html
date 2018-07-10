@@ -1,0 +1,20 @@
+{% extends 'feeds/base.html' %}
+
+
+{% block content %}
+    {% if message %}
+        {{ message }}
+    {% endif %}
+
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-5">
+            <h2>Login</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit"> Login </button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
