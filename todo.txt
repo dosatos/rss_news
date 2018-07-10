@@ -4,7 +4,7 @@ LEGEND: todo (-), done (x)
 # Setup the environment
 x Init git
 x Docker
-- Store SECRET key separately as an env variable
+x Store SECRET key separately as an env variable
 
 # Install django
 x create django project
