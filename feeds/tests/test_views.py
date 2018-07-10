@@ -48,12 +48,12 @@ def test_source_view_authenticated(user):
 
 
 def test_feeds_view_unauthenticated(guest):
-    response = guest.get('/feeds/')
+    response = guest.get('/')
     assert response.status_code == 200
 
 
 def test_feeds_view_authenticated(user):
-    response = user.get('/feeds/')
+    response = user.get('/')
     assert response.status_code == 200
 
 
