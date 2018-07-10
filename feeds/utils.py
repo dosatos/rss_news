@@ -117,6 +117,6 @@ def get_tz_aware_date(parsed_time):
     try:
         parsed_time = datetime.fromtimestamp(mktime(parsed_time))
     except TypeError as e:
-        print(e)  # to be logged, is printed for simplicity
+        print("Error, conversion attempt error", e)  # to be logged, is printed for simplicity
     date_published = parsed_time if not timezone.is_naive(parsed_time) else timezone.make_aware(parsed_time)
     return date_published

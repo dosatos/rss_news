@@ -12,11 +12,12 @@ from comments.models import Comment
 from feeds import utils
 from feeds import tasks
 
+
 def feeds(request):
     template_path = 'feeds/feeds.html'
     articles = Article.objects.all()
     context = {'articles': articles,
-               'top_message': f"About {len(articles)} articles on the web-site",
+               'top_message': "About {count} articles on the web-site".format(count=len(articles)),
     }
     return render(request, template_path, context)  # TODO: limit number of items shown, so far shows all feeds without limitation
 
@@ -27,17 +28,7 @@ def source_page(request):
     sources = Source.objects.all()
     context = {'sources': sources}
     if request.method == 'POST':
-        form = SourceForm(request.POST)
-        if form.is_valid():
-            try:  # try to add to the db
-                url = form.cleaned_data['link']
-                utils.extend_sources(url)
-                return redirect('/sources/')
-            except KeyError as e:  # display message if the provided url is not valid
-                print("Error: ", e)  # prints for the sake of simplicity. should be logged instead.
-                context['form'] = form
-                context['message'] = 'Please, provide correct source link'
-                return render(request, template_path, context)
+        return add_source(request, template_path, context)
     form = SourceForm()
     context['form'] = form
     return render(request, template_path, context)
@@ -48,8 +39,31 @@ def bookmarks(request):
     template_path = 'feeds/feeds.html'
     articles =  request.user.bookmarks.all()
     context = {'articles': articles,
-               'top_message': f"You have bookmarked {len(articles)} articles."}
+               'top_message': "You have bookmarked {count} articles.".format(count=len(articles))}
     # TODO: limit number of items shown, so far shows all feeds without limitation
+    return render(request, template_path, context)
+
+
+def add_source(request, template_path, context):
+    """
+    Adds new source to the db with the consequent update of the articles table.
+        Url is validated for having rss feeds.
+
+    :param request:
+    :param template_path:
+    :param context:
+    :return: redirects back if success, otherwise renders the page back with the comments.
+    """
+    form = SourceForm(request.POST)
+    if form.is_valid():
+        try:  # try to add to the db
+            url = form.cleaned_data['link']
+            utils.extend_sources(url)
+            return render(request, template_path, context)
+        except KeyError as e:  # display message if the provided url is not valid
+            print("Error, url provided is not valid: ", e)  # prints for the sake of simplicity. should be logged instead.
+            context['form'] = form
+            context['message'] = 'Please, provide correct source link'
     return render(request, template_path, context)
 
 
@@ -73,5 +87,3 @@ def add_comment(request):
             content = request.POST['content']
             Comment.objects.create(author=author, article=article, content=content)
     return redirect('/')
-
-# TODO: show comments field if_authenticated
