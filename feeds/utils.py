@@ -14,8 +14,8 @@ def parse(url):
     Regular expression is used to validate and correct
     for special cases of the url provided.
 
-    :type url: str
-    :rtype: feedparser.FeedParserDict
+    :param url: str
+    :return: feedparser.FeedParserDict
     """
     regex = re.compile(
         r'^(?:http)s?://'  # http:// or https://
@@ -34,8 +34,8 @@ def get_source(parsed):
     Generates a dictionary with fields 'title' and 'link'
     from a given "parsed" object.
 
-    :type parsed: feedparser.FeedParserDict
-    :rtype: feeds.models.Source
+    :param parsed: feedparser.FeedParserDict
+    :return: feeds.models.Source
     """
     source = parsed['feed']
     return {
@@ -48,9 +48,9 @@ def get_articles(parsed, source):
     From a given parsed object and a source provided,
     generates article dict objects.
 
-    :type parsed: feedparser.FeedParserDict
-    :type source: feeds.models.Source
-    :rtype: list of dict objects
+    :param parsed: feedparser.FeedParserDict
+    :param source: feeds.models.Source
+    :return: list of dict objects
     """
     entries = parsed['entries']
 
@@ -71,8 +71,8 @@ def extend_sources(url):
         1. Saves a source object based on the url parsed
         2. Updates articles based on the url parsed and the source from the above
 
-    :type url: str
-    :rtype: None
+    :param url: str
+    :return: None
     """
     parsed = parse(url)
 
@@ -92,8 +92,8 @@ def update_source(articles):
     If an article is in the database it is not added any more.
         get_or_create() method is used to ensure the latter.
 
-    :type articles: list of dict objects
-    :rtype: None
+    :param articles: list of dict objects
+    :return: None
     """
     for a in articles:
         defaults = {
@@ -110,9 +110,9 @@ def get_tz_aware_date(parsed_time):
     Adds time zone to the tz-unaware/naive time objects.
     Default time zone is set.
 
-    :type parsed_time: datetime
+    :param parsed_time: datetime
                        if time.struct_time is provided, then changed to datetime
-    :rtype: datetime.datetime
+    :return: datetime.datetime
     """
     try:
         parsed_time = datetime.fromtimestamp(mktime(parsed_time))

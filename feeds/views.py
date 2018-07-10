@@ -14,6 +14,11 @@ from feeds import tasks
 
 
 def feeds(request):
+    """
+    Generates feeds view
+    :param request: django.http.request
+    :return: renders a page
+    """
     template_path = 'feeds/feeds.html'
     articles = Article.objects.all()
     context = {'articles': articles,
@@ -23,6 +28,11 @@ def feeds(request):
 
 
 def source_page(request):
+    """
+    Generates view for a source page
+    :param request: django.http.request
+    :return: renders a page
+    """
     tasks.auto_update.delay()
     template_path = 'feeds/sources.html'
     sources = Source.objects.all()
@@ -36,6 +46,11 @@ def source_page(request):
 
 @login_required
 def bookmarks(request):
+    """
+    Generates bookmarks view
+    :param request: django.http.request
+    :return: renders a page
+    """
     template_path = 'feeds/feeds.html'
     articles =  request.user.bookmarks.all()
     context = {'articles': articles,
@@ -46,12 +61,12 @@ def bookmarks(request):
 
 def add_source(request, template_path, context):
     """
-    Adds new source to the db with the consequent update of the articles table.
+    Adds a new source to the db with the consequent update of the articles table.
         Url is validated for having rss feeds.
 
-    :param request:
-    :param template_path:
-    :param context:
+    :param request: django.http.request
+    :param template_path: str
+    :param context: dict
     :return: redirects back if success, otherwise renders the page back with the comments.
     """
     form = SourceForm(request.POST)
@@ -68,9 +83,14 @@ def add_source(request, template_path, context):
 
 
 def add_bookmark(request):
+    """
+    Adds/Removes a bookmark to an authorized user.
+
+    :param request: django.http.request
+    :return: redirects to '/bookmarks/'
+    """
     if request.method == "POST":
         if request.user.is_authenticated:
-            print(request.POST)
             article = get_object_or_404(Article, pk=int(request.POST['key']))
             if article in request.user.bookmarks.all():  # adding to bookmarks
                 request.user.bookmarks.remove(article)
@@ -80,6 +100,12 @@ def add_bookmark(request):
 
 
 def add_comment(request):
+    """
+    Adds commentaries under a particular post.
+
+    :param request: django.http.request
+    :return: redirects to '/'
+    """
     if request.method == "POST":
         if request.user.is_authenticated:
             author = request.user
