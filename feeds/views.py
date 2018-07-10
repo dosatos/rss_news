@@ -4,15 +4,15 @@ from django.db.models import Prefetch
 
 from feeds.models import Source, Article
 from feeds.forms import SourceForm
+
 from comments.models import Comment
+# from comments.forms import CommentForm
 
 
 from feeds import utils
 from feeds import tasks
 
 def feeds(request):
-    if request.method == "POST":
-        return add_bookmark(request)
     template_path = 'feeds/feeds.html'
     articles = Article.objects.all()
     context = {'articles': articles,
@@ -45,8 +45,6 @@ def source_page(request):
 
 @login_required
 def bookmarks(request):
-    if request.method == "POST":
-        return add_bookmark(request)
     template_path = 'feeds/feeds.html'
     articles =  request.user.bookmarks.all()
     context = {'articles': articles,
@@ -56,9 +54,24 @@ def bookmarks(request):
 
 
 def add_bookmark(request):
-    article = get_object_or_404(Article, pk=int(request.POST['key']))
-    if article in request.user.bookmarks.all():  # adding to bookmarks
-        request.user.bookmarks.remove(article)
-    else:  # removing from bookmarks
-        request.user.bookmarks.add(article)
-    return redirect(request.path)
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            print(request.POST)
+            article = get_object_or_404(Article, pk=int(request.POST['key']))
+            if article in request.user.bookmarks.all():  # adding to bookmarks
+                request.user.bookmarks.remove(article)
+            else:  # removing from bookmarks
+                request.user.bookmarks.add(article)
+    return redirect('/bookmarks/')
+
+
+def add_comment(request):
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            author = request.user
+            article = get_object_or_404(Article, pk=int(request.POST['articleID']))
+            content = request.POST['content']
+            Comment.objects.create(author=author, article=article, content=content)
+    return redirect('/')
+
+# TODO: show comments field if_authenticated

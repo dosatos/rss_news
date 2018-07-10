@@ -23,56 +23,67 @@
             <h5 class="category">Source: {{ article.source.title }} | {{ article.date_published}}</h5>
             <!--TODO: clean the summary by removing <img>. so far truncated -->
             <p class="text">{{ article.body|truncatechars:200 }}</p>
-            <div class="row">
-                <div class="pull-left col-xs-5">
-                    <form method="POST">
-                        {% csrf_token %}
-                        {% if article in user.bookmarks.all %}
-                            <button class="btn-success" type="submit" name="key" value="{{ article.pk }}"> Remove from Bookmarks </button>
-                        {% else %}
-                            <button class="btn-primary" type="submit" name="key" value="{{ article.pk }}"> Add to Bookmarks </button>
-                        {% endif %}
-                    </form>
-                </div>
+            <div>
+                <div class="row">
 
-                <div class="pull-right col-xs-3">
-                    <button type="button" class="btn-default"
-                            data-toggle="collapse"
-                            data-target="#{{article.pk}}"> Comments:  <span class="badge">{{ article.comment_set.count }}</span> </button>
+                    <div>
+                        <!--bookmark button-->
+                        {% if user.is_authenticated %}
+                            <div class="pull-left col-xs-5">
+                                <form action="/add-bookmark/?next={{request.path}}" method="POST">
+                                    {% csrf_token %}
+                                    {% if article in user.bookmarks.all %}
+                                        <button class="btn-success" type="submit" name="key" value="{{ article.pk }}"> Remove from Bookmarks </button>
+                                    {% else %}
+                                        <button class="btn-primary" type="submit" name="key" value="{{ article.pk }}"> Add to Bookmarks </button>
+                                    {% endif %}
+                                </form>
+                            </div>
+                        {% endif %}
+
+
+                        <!--comment button - diplaying number of comments-->
+                        <div class="pull-right col-xs-4">
+                            <button type="button" class="btn-default"
+                                    data-toggle="collapse"
+                                    data-target="#{{article.pk}}"> Comments:  <span class="badge">{{ article.comment_set.count }}</span> </button>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="comment-wrapper">
+                    <!--comment body-->
+                    <div id="{{article.pk}}" class="row panel panel-default collapse">
+                        {% for comment in article.comment_set.all %}
+                        <div class="panel-body">
+                            {{ comment.author }} | {{ comment.date_added }}
+                            <br>
+                            {{ comment.content }}
+                            <hr>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <!--comment add form-->
+                    {% if user.is_authenticated %}
+                        <div style="width:50%">
+                            <form class="comment-add-content" action="/add-comment/?next={{request.path}}" method="POST">
+                                {% csrf_token %}
+                                <input type="text"
+                                       id="{{article.link}}"
+                                       class="form-control"
+                                       name="content"
+                                       placeholder="Write a comment">
+                                <input type="hidden"
+                                       name="articleID"
+                                       value="{{ article.pk }}">
+                            </form>
+                        </div>
+                    {% endif %}
+                    <hr>
                 </div>
             </div>
-            <br>
-            <div id="{{article.pk}}" class="row panel panel-default collapse">
-                {% for comment in article.comment_set.all %}
-                <div class="panel-body">
-                    {{ comment.author }}
-                    <br>
-                    {{ comment.content }}
-                    {{ comment.date_added }}
-                </div>
-                {% endfor %}
-            </div>
-            <div style="width:50%">
-                <form>
-                    {% csrf_token %}
-                    {{ comment_form.content }}
-                    <input type="text" class="form-control" id="" placeholder="Write a comment">
-                </form>
-            </div>
-            <hr>
         </div>
         {% endfor %}
     </div>
-    <script type="text/javascript">
-        function showComments(comment) {
-            console.log(comment);
-            var commentsBlock = document.getElementById(comment);
-            console.log(id, commentsBlock);
-            if (commentsBlock.style.display === "none") {
-                commentsBlock.style.display = "block";
-            } else {
-                commentsBlock.style.display = "none";
-            }
-        }
-    </script>
 {% endblock %}
